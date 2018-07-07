@@ -1,0 +1,33 @@
+{
+    "user0": {
+        "solo": 1357,
+        "party": 34,
+        "rankedSolo": 995,
+        "rankedParty": 540,
+        "team": 1905
+    },
+    "user1": {
+        "solo": 1357,
+        "party": 35,
+        "rankedParty": 706,
+        "team": 1018
+    },
+    "user2": {
+        "solo": 494,
+        "party": 34,
+        "rankedParty": 291,
+        "team": 384
+    },
+    "user3": {
+        "solo": 519,
+        "party": 3307,
+        "rankedParty": 737,
+        "team": 2305
+    },
+    "user4": {
+        "solo": 3749,
+        "party": 14,
+        "rankedParty": 540,
+        "team": 658
+    }
+}
