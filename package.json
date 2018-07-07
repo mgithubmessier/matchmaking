@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "this service takes in a user id and a match type and returns another user id with a similar mmk rating relevant to the match type",
   "dependencies": {
+    "express": "^4.16.2",
+    "cors": "^2.8.4",
+    "body-parser": "^1.18.2"
   },
   "devDependencies": {
   },

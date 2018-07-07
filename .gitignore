@@ -1,1 +1,2 @@
-/mock-data/*.json
+/mock-data
+/node_modules
