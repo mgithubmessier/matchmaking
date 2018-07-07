@@ -11,6 +11,6 @@
   },
   "scripts": {
     "create-mocks": "node generateMockJSON.js",
-    "server": "node server.js"
+    "serve": "node server.js"
   }
 }

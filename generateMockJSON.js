@@ -11,19 +11,19 @@ function getRandomInteger(maximumRandomInteger) {
  */
 function generateMMKStat() {
     const randomIntUnder100 = getRandomInteger(100);
-    if(randomIntUnder100 < 5)
+    if (randomIntUnder100 < 5)
         return getRandomInteger(1100);
-    else if(randomIntUnder100 < 10)
+    else if (randomIntUnder100 < 10)
         return getRandomInteger(1500);
-    else if(randomIntUnder100 < 25)
+    else if (randomIntUnder100 < 25)
         return getRandomInteger(2000);
-    else if(randomIntUnder100 < 50)
+    else if (randomIntUnder100 < 50)
         return getRandomInteger(2250);
-    else if(randomIntUnder100 < 75)
+    else if (randomIntUnder100 < 75)
         return getRandomInteger(2731);
-    else if(randomIntUnder100 < 90)
+    else if (randomIntUnder100 < 90)
         return getRandomInteger(3200);            
-    else if(randomIntUnder100 < 95)
+    else if (randomIntUnder100 < 95)
         return getRandomInteger(3900);
     else 
         return getRandomInteger(4100);
@@ -43,7 +43,7 @@ let teamTierMap = {};
  * @param {object} map - contains arrays of userIds, bucketed by their mmkStat
  */
 function addToMap(map, userId, mmkStat) {
-    if(map[mmkStat]) {
+    if (map[mmkStat]) {
         map[mmkStat].push(userId);
     } else {
         map[mmkStat] = [userId]
@@ -51,7 +51,7 @@ function addToMap(map, userId, mmkStat) {
     return mmkStat;
 }
 
-for(let i = 0; i < NUMBER_OF_ENTRIES; i++) {
+for (let i = 0; i < NUMBER_OF_ENTRIES; i++) {
     const mockUserId = 'user'+i;
     userEntriesJSON[mockUserId] = {
         solo: addToMap(soloTierMap, mockUserId, generateMMKStat()),

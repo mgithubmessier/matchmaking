@@ -16,7 +16,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-module.exports = app;
+require('./routes.js')(app);
 
 app.listen(8080);
-process.stdout.write('Welcome to your game.\nPlease enter your userId:');
