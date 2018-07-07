@@ -1,0 +1,13 @@
+{
+  "name": "matchmaking",
+  "version": "0.0.1",
+  "description": "this service takes in a user id and a match type and returns another user id with a similar mmk rating relevant to the match type",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "create-mocks": "node generateMockJSON.js",
+    "server": "node server.js"
+  }
+}
