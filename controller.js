@@ -4,9 +4,6 @@ module.exports = function(app){
         if(!req.query.userId) {
             throw new Error('userId not provided');
         }
-        if(!req.query.matchType) {
-            throw new Error('matchType not provided');
-        }
-        res.json({ userId: service(req.query.userId, req.query.matchType) });
+        res.json(service(req.query.userId, req.query.matchType));
     });
 }

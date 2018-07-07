@@ -61,6 +61,9 @@ for (let i = 0; i < NUMBER_OF_ENTRIES; i++) {
         team: addToMap(teamTierMap, mockUserId, generateMMKStat())
     }
 }
+if (!fs.existsSync('./mock-data')){
+    fs.mkdirSync('./mock-data');
+}
 fs.writeFile('./mock-data/mock-userdata.json', JSON.stringify(userEntriesJSON), 'utf8');
 fs.writeFile('./mock-data/mock-solo-tier.json', JSON.stringify(soloTierMap), 'utf8');
 fs.writeFile('./mock-data/mock-party-tier.json', JSON.stringify(partyTierMap), 'utf8');

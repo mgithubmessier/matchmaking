@@ -15,29 +15,33 @@ function getRelevantMatchData(matchType) {
 }
 function findClosestMatch(userId, userMMKRating, relevantMatchData) {
     let mmkOffset = 0;
-    let matchedUserId = undefined;
-    while(!matchedUserId && relevantMatchData[userMMKRating + mmkOffset]) {
-        relevantMatchData[userMMKRating + mmkOffset].forEach((potentialMatchedUserId) => {
-            if(potentialMatchedUserId !== userId) {
-                matchedUserId = potentialMatchedUserId;
+    while(relevantMatchData[userMMKRating + mmkOffset]) {
+        const matchedUserIds = relevantMatchData[userMMKRating + mmkOffset];
+        for(let i = 0; i < matchedUserIds.length; i++) {
+            const randomUserIndex = Math.floor(Math.random() * Math.floor(matchedUserIds.length)); 
+            const randomUserId = matchedUserIds[randomUserIndex]           
+            if(randomUserId !== userId) {
+                console.info('Match found', randomUserId);
+                return randomUserId;
             }
-        });
+        }
         mmkOffset = mmkOffset >= 0 ? -(mmkOffset + 1) : -mmkOffset;
-    }
-    console.log(matchedUserId);
-    if(matchedUserId) {
-        return matchedUserId;
     }
     throw new Error('Server error: Match not found');
 }
 module.exports = function(userId, matchType) {
-    console.log(userId, matchType);
     if(!mockUserData[userId]) {
         throw new Error('Nonexistant userId: ' + userId);
     } else {
         const userData = mockUserData[userId];
+        if(!matchType) {
+            console.info('Getting userData for userId: ' + userId);
+            return userData;
+        }        
+        console.info('Finding match for userId: ' + userId + ' on matchType: ' + matchType);
         const relevantMatchData = getRelevantMatchData(matchType);
         const userMMKRating = userData[matchType];
-        return findClosestMatch(userId, userMMKRating, relevantMatchData);
+        const matchedUserId = findClosestMatch(userId, userMMKRating, relevantMatchData);
+        return { userId: matchedUserId, userData: mockUserData[matchedUserId] };
     }
 }
