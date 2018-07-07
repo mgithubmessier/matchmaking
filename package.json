@@ -10,7 +10,7 @@
   "devDependencies": {
   },
   "scripts": {
-    "create-mocks": "node generateMockJSON.js",
+    "create-mocks": "node scripts/generateMockJSON.js",
     "serve": "node server.js"
   }
 }

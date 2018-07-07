@@ -16,6 +16,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-require('./routes.js')(app);
+require('./src/routes.js')(app);
 
 app.listen(8080);

@@ -1,15 +1,15 @@
-let mockUserData = require('./mock-data/mock-userdata');
+let mockUserData = require('../mock-data/mock-userdata');
 function getRelevantMatchData(matchType) {
     if (matchType === 'solo') {
-        return require('./mock-data/mock-solo-tier.json');
+        return require('../mock-data/mock-solo-tier.json');
     } else if (matchType === 'party') {
-        return require('./mock-data/mock-party-tier.json');
+        return require('../mock-data/mock-party-tier.json');
     } else if (matchType === 'team') {
-        return require('./mock-data/mock-team-tier.json');
+        return require('../mock-data/mock-team-tier.json');
     } else if (matchType === 'rankedSolo') {
-        return require('./mock-data/mock-ranked-solo-tier.json');
+        return require('../mock-data/mock-ranked-solo-tier.json');
     } else if (matchType === 'rankedParty') {
-        return require('./mock-data/mock-ranked-party-tier.json');        
+        return require('../mock-data/mock-ranked-party-tier.json');        
     }
     throw new Error('Invalid match type provided: ' + matchType);
 }
