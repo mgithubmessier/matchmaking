@@ -1,15 +1,15 @@
-let mockUserData = require('../mock-data/mock-userdata');
+let path = '../mock-data/';
 function getRelevantMatchData(matchType) {
     if (matchType === 'solo') {
-        return require('../mock-data/mock-solo-tier.json');
+        return require(path+'mock-solo-tier.json');
     } else if (matchType === 'party') {
-        return require('../mock-data/mock-party-tier.json');
+        return require(path+'mock-party-tier.json');
     } else if (matchType === 'team') {
-        return require('../mock-data/mock-team-tier.json');
+        return require(path+'mock-team-tier.json');
     } else if (matchType === 'rankedSolo') {
-        return require('../mock-data/mock-ranked-solo-tier.json');
+        return require(path+'mock-ranked-solo-tier.json');
     } else if (matchType === 'rankedParty') {
-        return require('../mock-data/mock-ranked-party-tier.json');        
+        return require(path+'mock-ranked-party-tier.json');        
     }
     throw new Error('Invalid match type provided: ' + matchType);
 }
@@ -27,11 +27,19 @@ function findClosestMatch(userId, userMMKRating, relevantMatchData) {
         }
         mmkOffset = mmkOffset >= 0 ? -(mmkOffset + 1) : -mmkOffset;
     }
-    throw new Error('Server error: Match not found');
+    throw new Error({ msg: 'Server error: Match not found' });
 }
-module.exports = function(userId, matchType) {
+/**
+ * 
+ * @param {*} userId 
+ * @param {*} matchType 
+ * @param {boolean} testing - is not something that would exist on this method in production, because the only mock we would need would be in the testing suite. For this proof of concept, both runtime and tests need their own mocks. This parameter alternates between them.
+ */
+module.exports = function(userId, matchType, testing) {
+    if(testing) path = '../tests/test-data/'
+    let mockUserData = require(path+'mock-userdata');
     if(!mockUserData[userId]) {
-        throw new Error('Nonexistant userId: ' + userId);
+        throw new Error({ msg: 'Nonexistant userId: ' + userId });
     } else {
         const userData = mockUserData[userId];
         if(!matchType) {

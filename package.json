@@ -8,9 +8,12 @@
     "body-parser": "^1.18.2"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
   },
   "scripts": {
     "create-mocks": "node scripts/generateMockJSON.js",
-    "serve": "node server.js"
+    "serve": "node server.js",
+    "test": "mocha ./tests/service.spec.js"
   }
 }
